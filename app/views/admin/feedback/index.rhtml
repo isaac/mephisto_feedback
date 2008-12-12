@@ -12,9 +12,9 @@
   </ul>
   <% form_tag({:action => 'index'}, :method => 'get') do -%>
   <ul id="attributes">
-    <li><label>Key: <%= text_field_tag :key, params[:key] %></li>
-    <li><label>Name/Email: <%= text_field_tag :name, params[:name] %></li>
-    <li><label>Search: <%= text_field_tag :q, params[:q] %></label></li>
+    <li><label>Key</label>&nbsp;<%= text_field_tag :key, params[:key] %></li>
+    <li><label>Name/Email</label>&nbsp;<%= text_field_tag :name, params[:name] %></li>
+    <li><label>Search</label>&nbsp;<%= text_field_tag :q, params[:q] %></li>
     <li><input type="submit" value="Go" /></li>
   </ul>
   <% end -%>
@@ -51,6 +51,6 @@
 
 <% else %>
   <div class="empty" style="margin-bottom:20px">
-    <%= Engines.plugins[:mephisto_feedback].no_feedback_msg %>
+    <%= Mephisto::Plugin[:feedback].no_feedback_msg %>
   </div>
 <% end %>

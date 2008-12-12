@@ -1,15 +1,9 @@
 class Feedback < ActiveRecord::Base
-
-  Engines.plugins[:mephisto_feedback].add_tab('Feedback', :controller => 'feedback')
-  Engines.plugins[:mephisto_feedback].option :no_feedback_msg, "You don't seem to have any feedback."
-  Engines.plugins[:mephisto_feedback].option :destroy_msg, "Feedback deleted."
-  Engines.plugins[:mephisto_feedback].option :clear_msg, "All feedback has been cleared."
-
   belongs_to :site
   attr_protected :site_id
   validates_presence_of :site_id
-  @@default_keys = %w(key)
-  
+  @@default_keys = %w(name email key)
+
   def self.create_from(site, params)
     order = params.delete(:order)
     order = order ? order.split(',') : (params.keys - @@default_keys)
@@ -28,5 +22,4 @@ class Feedback < ActiveRecord::Base
     feedback.site_id = site.id
     feedback.save!
   end
-    
 end
